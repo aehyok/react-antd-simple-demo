@@ -57,6 +57,12 @@ export default defineConfig({
               component: './Welcome',
             },
             {
+              path: '/epgEditor',
+              name: 'epgEditor',
+              icon: 'profile',
+              component: './epg/EpgEditor',
+            },
+            {
               path: '/admin',
               name: 'admin',
               icon: 'crown',

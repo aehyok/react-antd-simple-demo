@@ -8,7 +8,7 @@ import CreateForm from './components/CreateForm';
 import UpdateForm, { FormValueType } from './components/UpdateForm';
 import { TableListItem } from './data.d';
 import { queryRule, updateRule, addRule, removeRule } from './service';
-
+import { history } from 'umi';
 /**
  * 添加节点
  * @param fields
@@ -80,8 +80,8 @@ const TableList: React.FC<{}> = () => {
   const [selectedRowsState, setSelectedRows] = useState<TableListItem[]>([]);
   const columns: ProColumns<TableListItem>[] = [
     {
-      title: '规则名称',
-      dataIndex: 'name',
+      title: 'EPG名称',
+      dataIndex: 'epgName',
       tip: '规则名称是唯一的 key',
       formItemProps: {
         rules: [
@@ -96,13 +96,13 @@ const TableList: React.FC<{}> = () => {
       },
     },
     {
-      title: '描述',
-      dataIndex: 'desc',
+      title: '备注',
+      dataIndex: 'remark',
       valueType: 'textarea',
     },
     {
-      title: '服务调用次数',
-      dataIndex: 'callNo',
+      title: 'projectType',
+      dataIndex: 'projectType',
       sorter: true,
       hideInForm: true,
       renderText: (val: string) => `${val} 万`,
@@ -144,10 +144,10 @@ const TableList: React.FC<{}> = () => {
           <a
             onClick={() => {
               handleUpdateModalVisible(true);
-              setStepFormValues(record);
+              history.push('/editor');
             }}
           >
-            配置
+            编辑
           </a>
           <Divider type="vertical" />
           <a href="">订阅警报</a>
